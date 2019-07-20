@@ -1,0 +1,36 @@
+ {
+    "name": "N窓 Quick",
+    "version": "1.0",
+    "description": "YouTubeから直接N窓に動画を追加できるようにするアドオンです",
+    "manifest_version": 2,
+    "background": {
+      "scripts": ["background.js"]
+    },
+    "content_scripts": [
+      {
+        "all_frames": true, 
+        "matches": [
+          "https://www.youtube.com/*"
+        ], 
+        "js":[
+          "quick-button.js"
+        ], 
+        "css":[
+          "style.css"
+        ]
+      },
+      {
+        "matches": [
+          "*://piporoid.net/NMado/*"
+        ], 
+        "js":[
+          "nmado.js"
+        ]
+      }
+    ],
+    "permissions": [
+      "https://www.youtube.com/*",
+      "https://piporoid.net/NMado/*",
+      "tabs"
+    ]
+ }
