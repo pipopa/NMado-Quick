@@ -4,7 +4,6 @@ chrome.runtime.onMessage.addListener((message, sender) => {
       chrome.tabs.create({
         url:"https://piporoid.net/NMado/"
       }, (tab) => {
-        // chrome.tabs.update(sender.tab.id, {'active': true }, () => { });
         chrome.tabs.onUpdated.addListener(function listener(tabId, info) {
           if (info.status === "complete" && tabId === tab.id) {
             chrome.tabs.onUpdated.removeListener(listener);

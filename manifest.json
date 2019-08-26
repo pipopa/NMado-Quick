@@ -8,13 +8,23 @@
     },
     "content_scripts": [
       {
-        "all_frames": true, 
         "matches": [
           "https://www.youtube.com/*"
-        ], 
+        ],
         "js":[
-          "quick-button.js"
+          "subscription.js"
         ], 
+        "css":[
+          "style.css"
+        ]
+      },
+      {
+        "matches": [
+          "https://www.youtube.com/watch*"
+        ],
+        "js": [
+          "player.js"
+        ],
         "css":[
           "style.css"
         ]

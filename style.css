@@ -4,3 +4,19 @@
   background: #808080;
   cursor: pointer;
 }
+
+#nmado-quick-icon-button {
+  position: relative;
+  display: inline-block;
+  top: -11px;
+  width: 18px;
+  height: 18px;
+  margin: 9px;
+  background: red;
+  color: white;
+  font-size: 19px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 18px;
+  cursor: pointer;
+}
