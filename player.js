@@ -17,14 +17,21 @@ const addQuickIconButton = () => {
     }
     return quickButton
   }
-  if (ytpRight) {
+  if (ytpRight && !ytpRight.querySelector('#nquick-icon-button')) {
     const quickButton = createQuickButton('nquick-ytp-right')
     ytpRight.insertBefore(quickButton, ytpRight.firstChild)
   }
-  if (ytpOfflineSlateButton) {
+  if (ytpOfflineSlateButton && !ytpOfflineSlateButton.querySelector('#nquick-icon-button')) {
     const quickButton = createQuickButton('nquick-ytp-offline')
     ytpOfflineSlateButton.appendChild(quickButton)
   }
 }
 
-setTimeout(() => addQuickIconButton(), 500)
+document.body.addEventListener('yt-page-data-updated', () => {
+  setTimeout(() => addQuickIconButton() , 200);
+})
+document.addEventListener('yt-navigate-finish', () => {
+  setTimeout(() => addQuickIconButton(), 200);
+})
+
+setTimeout(() => addQuickIconButton(), 200);
