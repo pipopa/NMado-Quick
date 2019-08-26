@@ -5,7 +5,7 @@ const addQuickButton = () => {
       dismissable.setAttribute("has-quick-button", "true");
       let detail = dismissable.querySelector("div#details");
       let quickButton = document.createElement("button");
-      quickButton.id = "nmado-quick-button";
+      quickButton.id = "nquick-button";
       quickButton.innerHTML = "N窓に追加";
       if (detail) {
         detail.appendChild(quickButton);
