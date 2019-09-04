@@ -1,7 +1,7 @@
  {
     "name": "N窓 Quick",
     "version": "1.0",
-    "description": "YouTubeから直接N窓に動画を追加できるようにするアドオンです",
+    "description": "N窓に簡単に動画を追加できるようにする拡張機能です",
     "manifest_version": 2,
     "icons": {
       "16": "icon16.png",
