@@ -6,7 +6,6 @@
 }
 
 #nquick-icon-button {
-  position: relative;
   display: inline-block;
   background: red;
   color: white;
@@ -16,6 +15,7 @@
 }
 
 .nquick-ytp-right {
+  position: relative;
   top: -11px;
   width: 18px;
   height: 18px;
@@ -25,10 +25,26 @@
 }
 
 .nquick-ytp-offline {
+  position: relative;
   top: 3px;
   width: 32px;
   height: 32px;
   margin-left: 10px;
   font-weight: 600;
   line-height: 32px;
+}
+
+.nquick-itsukara {
+  position: absolute;
+  height: 50%;
+  top: 0;
+  bottom: 0;
+  right: 95px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 23px;
+  height: 23px;
+  border-radius: 5px;
+  font-weight: 600;
+  line-height: 23px;
 }

@@ -14,6 +14,14 @@
     "content_scripts": [
       {
         "matches": [
+          "*://piporoid.net/NMado/*"
+        ],
+        "js":[
+          "nmado.js"
+        ]
+      },
+      {
+        "matches": [
           "https://www.youtube.com/*"
         ],
         "js":[
@@ -26,15 +34,19 @@
       },
       {
         "matches": [
-          "*://piporoid.net/NMado/*"
-        ], 
-        "js":[
-          "nmado.js"
+          "https://www.itsukaralink.jp/"
+        ],
+        "js": [
+          "itsukara.js"
+        ],
+        "css": [
+          "style.css"
         ]
       }
     ],
     "permissions": [
       "https://www.youtube.com/*",
+      "https://www.itsukaralink.jp/*",
       "https://piporoid.net/NMado/*",
       "tabs"
     ]
