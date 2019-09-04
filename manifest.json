@@ -9,7 +9,8 @@
       "128": "icon128.png"
     },
     "background": {
-      "scripts": ["background.js"]
+      "scripts": ["background.js"],
+      "persistent": false
     },
     "content_scripts": [
       {
