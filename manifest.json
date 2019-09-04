@@ -35,7 +35,7 @@
       },
       {
         "matches": [
-          "https://www.itsukaralink.jp/"
+          "https://www.itsukaralink.jp/*"
         ],
         "js": [
           "itsukara.js"
@@ -46,9 +46,6 @@
       }
     ],
     "permissions": [
-      "https://www.youtube.com/*",
-      "https://www.itsukaralink.jp/*",
-      "https://piporoid.net/NMado/*",
       "tabs"
     ]
  }
