@@ -30,11 +30,11 @@
   }
 
   document.body.addEventListener('yt-page-data-updated', () => {
-    setTimeout(() => addQuickButton() , 200);
+    setTimeout(() => addQuickButton() , 200)
   })
   document.addEventListener('yt-navigate-finish', () => {
-    setTimeout(() => addQuickButton(), 200);
+    setTimeout(() => addQuickButton(), 200)
   })
 
-  setTimeout(() => addQuickButton(), 200);
+  setTimeout(() => addQuickButton(), 200)
 }())

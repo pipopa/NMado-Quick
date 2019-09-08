@@ -6,7 +6,7 @@ const createQuickButton = (className) => {
   quickButton.onclick = () => {
     const eventDetailTime = document.querySelector('div.event-detail-thumbnail')
     const youtubeUrl = eventDetailTime.querySelector('div.inner a').href
-    const youtubeId = youtubeUrl.match(/\/watch\?v=(.+)/)[1];
+    const youtubeId = youtubeUrl.match(/\/watch\?v=(.+)/)[1]
     chrome.runtime.sendMessage({youtubeId: youtubeId })
   }
   return quickButton
@@ -22,7 +22,7 @@ const addQuickButton = () => {
 const observer = new MutationObserver(() => {
   setTimeout(() => {
     addQuickButton()
-  }, 200);
+  }, 200)
 })
-const config = { attributes: true, childList: true, characterData: true };
+const config = { attributes: true, childList: true, characterData: true }
 observer.observe(document.body, config)
