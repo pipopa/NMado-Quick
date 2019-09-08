@@ -12,13 +12,16 @@ const createQuickButton = (className) => {
   return quickButton
 }
 
+const addQuickButton = () => {
+  let eventDetailTime = document.querySelector('div.event-detail-time')
+  let quickButton = createQuickButton('nquick-itsukara')
+  if (eventDetailTime && !eventDetailTime.querySelector('div.nquick-itsukara')) {
+    eventDetailTime.appendChild(quickButton)
+  }
+}
 const observer = new MutationObserver(() => {
   setTimeout(() => {
-    let eventDetailTime = document.querySelector('div.event-detail-time')
-    let quickButton = createQuickButton('nquick-itsukara')
-    if (eventDetailTime && !eventDetailTime.querySelector('div.nquick-itsukara')) {
-      eventDetailTime.appendChild(quickButton)
-    }
+    addQuickButton()
   }, 200);
 })
 const config = { attributes: true, childList: true, characterData: true };
