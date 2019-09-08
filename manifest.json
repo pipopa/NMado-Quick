@@ -1,6 +1,6 @@
  {
     "name": "N窓 Quick",
-    "version": "1.1",
+    "version": "1.2",
     "description": "N窓に簡単に動画を追加できるようにする拡張機能です",
     "manifest_version": 2,
     "icons": {
