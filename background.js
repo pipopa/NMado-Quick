@@ -1,4 +1,4 @@
-chrome.runtime.onMessage.addListener((message, sender) => {
+const sendYoutubeId = (youtubeId) => {
   chrome.tabs.query({url: 'https://piporoid.net/NMado/'}, (tabs) => {
     if (tabs.length === 0) {
       chrome.tabs.create({
@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((message, sender) => {
             chrome.tabs.sendMessage(
               tab.id,
               {
-                youtubeId: message.youtubeId
+                youtubeId: youtubeId
               }
             )
           }
@@ -22,10 +22,27 @@ chrome.runtime.onMessage.addListener((message, sender) => {
       chrome.tabs.sendMessage(
         tab.id,
         {
-          youtubeId: message.youtubeId
+          youtubeId: youtubeId
         }
       )
     }
+  })
+}
+
+chrome.contextMenus.create({
+  id: "nmado-quick",
+  title: "N窓へ追加",
+  contexts: ["link"],
+  targetUrlPatterns: ["*://*.youtube.com/*"]
+})
+chrome.contextMenus.onClicked.addListener((info, _tab) => {
+  const youtubeId = info.linkUrl.match(/\/watch\?v=(.+)/)[1]
+  console.log(info.linkUrl)
+  if (youtubeId) {
+    sendYoutubeId(youtubeId)
   }
-  )
+})
+
+chrome.runtime.onMessage.addListener((message, _sender) => {
+  sendYoutubeId(message.youtubeId)
 })
