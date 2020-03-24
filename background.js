@@ -33,10 +33,10 @@ chrome.contextMenus.create({
   id: "nmado-quick",
   title: "N窓へ追加",
   contexts: ["link"],
-  targetUrlPatterns: ["*://*.youtube.com/*"]
+  targetUrlPatterns: ["*://*.youtube.com/*", "*://youtu.be/*"]
 })
 chrome.contextMenus.onClicked.addListener((info, _tab) => {
-  const youtubeId = info.linkUrl.match(/\/watch\?v=(.+)/)[1]
+  const youtubeId = info.linkUrl.match(/\/watch\?v=(.+)|youtu.be\/(.+)/)[1]
   console.log(info.linkUrl)
   if (youtubeId) {
     sendYoutubeId(youtubeId)
