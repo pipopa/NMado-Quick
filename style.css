@@ -24,14 +24,21 @@
   line-height: 18px;
 }
 
+span.ytp-offline-slate-buttons>div {
+  display: inline-block !important;
+  position: relative;
+  top: -4px;
+}
+
 .nquick-ytp-offline {
   position: relative;
-  top: 3px;
+  top: 0px !important;
   width: 32px;
   height: 32px;
   margin-left: 10px;
   font-weight: 600;
   line-height: 32px;
+  border-radius: 1px;
 }
 
 .nquick-itsukara {
