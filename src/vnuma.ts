@@ -1,5 +1,5 @@
 import { browser } from 'webextension-polyfill-ts'
-import { Video, Live } from './vnuma-video.ts'
+import { VideoNode, Live, Schedule } from './vnuma-video.ts'
 
 const createQuickButton = (className: string, youtubeId: string): HTMLDivElement => {
   let quickButton = document.createElement('div')
@@ -12,7 +12,7 @@ const createQuickButton = (className: string, youtubeId: string): HTMLDivElement
   return quickButton
 }
 
-const getYouTubeVideosOnLive = (): Array<Live> => {
+const getYouTubeVideoNodesOnLive = (): Array<Live> => {
   let videos = []
   const trList = Array.prototype.slice.call(document.querySelectorAll("table tr"))
   for (let tr of trList) {
@@ -30,16 +30,35 @@ const getYouTubeVideosOnLive = (): Array<Live> => {
   return videos
 }
 
+const getYouTubeVideoNodesOnSchedule = (): Array<Schedule> => {
+  let videos = []
+  const gridItems = Array.prototype.slice.call(document.querySelectorAll(".MuiGrid-item"))
+  for (let item of gridItems) {
+    const imgList = item.querySelectorAll("img")
+    if (imgList.length < 1) {
+      continue
+    }
+    const thumbnail = imgList[0]
+    if (thumbnail.src.includes("i.ytimg.com")) {
+      videos.push(new Schedule(item))
+    }
+  }
+  return videos
+}
+
+
 const init = () => {
   const chunkSize = 10
   const root = document.querySelector(".MuiBox-root")
-  const observer = new MutationObserver((mutations) => {
-    let videos = getYouTubeVideosOnLive()
-    for (let i=0, j=videos.length; i * chunkSize < j; i++) {
-      const nextChunkHead = i * chunkSize
-      let chunk = videos.slice(nextChunkHead, nextChunkHead + chunkSize);
+  const observer = new MutationObserver(() => {
+    const lives = getYouTubeVideoNodesOnLive()
+    const schedules = getYouTubeVideoNodesOnSchedule()
+    let videoNodes = lives.concat(schedules)
+    for (let i=0, j=videoNodes.length; i * chunkSize < j; i++) {
+      const chunkHead = i * chunkSize
+      let chunk = videoNodes.slice(chunkHead, chunkHead + chunkSize);
       setTimeout(() => {
-        chunk.forEach((video: Video) => video.addQuickButton(createQuickButton))
+        chunk.forEach((videoNode: VideoNode) => videoNode.addQuickButton(createQuickButton))
       }, 300 * (i + 1))
     }
   });

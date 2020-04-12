@@ -12,3 +12,20 @@
   color: white;
   cursor: pointer;
 }
+
+.nquick-vnuma-schedule {
+  position: absolute;
+  top: 5px;
+  left: 50px;
+  width: 17px;
+  height: 17px;
+  border-radius: 100%;
+  margin-right: 3px;
+  font-weight: 800;
+  line-height: 17px;
+  text-align:center;
+  background: red;
+  color: white;
+  cursor: pointer;
+  z-index: 1;
+}

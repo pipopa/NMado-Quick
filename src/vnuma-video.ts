@@ -1,18 +1,18 @@
-interface Video {
-  videoNode: Element
+interface VideoNode {
+  node: Element
   getYouTubeId(): string;
   addQuickButton(createQuickButton: (className: string, youtubeId: string) => HTMLDivElement): void;
 }
 
-class Live implements Video {
-  videoNode: Element
+class Live implements VideoNode {
+  node: Element
 
-  constructor(videoNode: Element) {
-    this.videoNode = videoNode
+  constructor(node: Element) {
+    this.node = node
   }
 
   getYouTubeId(): string {
-    const imgList = this.videoNode.querySelectorAll("img")
+    const imgList = this.node.querySelectorAll("img")
     if (imgList.length < 3) {
       return ""
     }
@@ -26,15 +26,14 @@ class Live implements Video {
 
   addQuickButton(createQuickButton: (className: string, youtubeId: string) => HTMLDivElement): void {
     const youtubeId = this.getYouTubeId()
-    if (youtubeId && !this.videoNode.querySelector('.nquick-vnuma')) {
-      const icon = this.videoNode.querySelector("img.MuiAvatar-img")
+    if (youtubeId && !this.node.querySelector('.nquick-vnuma')) {
+      const icon = this.node.querySelector("img.MuiAvatar-img")
       if (!icon) {
         return
       }
       const tr = icon.parentElement.parentElement.parentElement
       const muiboxRoot = tr.querySelector('.MuiBox-root')
       const videoDetails = muiboxRoot.querySelectorAll('.MuiBox-root')
-      console.log(youtubeId)
       const quickButton = createQuickButton('nquick-vnuma', youtubeId)
       if (videoDetails.length == 1) {
         muiboxRoot.appendChild(quickButton)
@@ -45,4 +44,34 @@ class Live implements Video {
   }
 }
 
-export { Video, Live }
+class Schedule implements VideoNode {
+  node: Element
+
+  constructor(node: Element) {
+    this.node = node
+  }
+
+  getYouTubeId(): string {
+    const imgList = this.node.querySelectorAll("img")
+    if (imgList.length < 1) {
+      return ""
+    }
+    const thumbnail = imgList[0]
+    const m = thumbnail.src.match(/vi\/([^\/]+)\//)
+    if (m.length >= 2) {
+      return m[1]
+    }
+    return ""
+  }
+
+  addQuickButton(createQuickButton: (className: string, youtubeId: string) => HTMLDivElement): void {
+    const youtubeId = this.getYouTubeId()
+    if (youtubeId && !this.node.querySelector('.nquick-vnuma-schedule')) {
+      let scheduledTime = this.node.querySelector('span')
+      const quickButton = createQuickButton('nquick-vnuma-schedule', youtubeId)
+      scheduledTime.parentElement.insertBefore(quickButton, scheduledTime)
+    }
+  }
+}
+
+export { VideoNode, Live, Schedule }
