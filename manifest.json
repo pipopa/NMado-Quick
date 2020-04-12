@@ -9,7 +9,7 @@
       "128": "icon128.png"
     },
     "background": {
-      "scripts": ["background.js"],
+      "scripts": ["src/background.js"],
       "persistent": false
     },
     "content_scripts": [
@@ -18,7 +18,7 @@
           "*://piporoid.net/NMado/*"
         ],
         "js":[
-          "nmado.js"
+          "src/nmado.js"
         ]
       },
       {
@@ -26,11 +26,11 @@
           "https://www.youtube.com/*"
         ],
         "js":[
-          "grid_video.js",
-          "player.js"
+          "src/grid_video.js",
+          "src/player.js"
         ],
         "css":[
-          "style.css"
+          "src/style.css"
         ]
       },
       {
@@ -38,10 +38,10 @@
           "https://www.itsukaralink.jp/*"
         ],
         "js": [
-          "itsukara.js"
+          "src/itsukara.js"
         ],
         "css": [
-          "style.css"
+          "src/style.css"
         ]
       },
       {
@@ -49,10 +49,10 @@
           "https://hiyoko.sonoj.net/*"
         ],
         "js": [
-          "vnuma.js"
+          "src/vnuma.js"
         ],
         "css": [
-          "vnuma.css"
+          "src/vnuma.css"
         ]
       }
     ],
