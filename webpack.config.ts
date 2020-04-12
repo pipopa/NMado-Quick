@@ -7,6 +7,7 @@ const config: ConfigurationFactory = () => {
   return {
     // モードの設定、v4系以降はmodeを指定しないと、webpack実行時に警告が出る
     mode: "development",
+    devtool: "cheap-module-source-map",
     entry: {
       vnuma: path.join(__dirname, 'src', 'vnuma.ts')
     },
